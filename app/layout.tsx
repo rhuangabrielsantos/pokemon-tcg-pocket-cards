@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/react";
 import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 
@@ -25,6 +26,8 @@ export default function RootLayout({
         <div className="grid grid-cols-[300px_minmax(900px,_1fr)_300px] w-screen h-screen antialiased">
           <div className="w-full h-full" />
           {children}
+
+          <Analytics />
           <div className="w-full h-full" />
         </div>
       </body>
