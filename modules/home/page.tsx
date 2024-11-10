@@ -1,9 +1,8 @@
 import { Suspense } from "react";
 
-import { IPokemon } from "@/app/api/pokemons/route";
 import { Skeleton } from "@/components/ui/skeleton";
 
-import PokemonCard from "./components/PokemonCard";
+import PokemonList from "./components/PokemonList";
 import PokemonListFilters from "./components/PokemonListFilters";
 import PokemonStatistics from "./components/PokemonStatistics";
 
@@ -15,12 +14,6 @@ interface IHomePageProps {
 
 const HomePage = async (props: IHomePageProps) => {
   const { searchParams } = props;
-
-  const response = await fetch(
-    `https://pokemon-tcg-pocket-cards.vercel.app/api/pokemons?name=${searchParams.name}&type=${searchParams.type}`
-  );
-
-  const data: IPokemon[] = await response.json();
 
   return (
     <section className="flex justify-start flex-col gap-8">
@@ -35,11 +28,7 @@ const HomePage = async (props: IHomePageProps) => {
         <PokemonListFilters />
 
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
-          <div className="grid grid-cols-5 gap-4 mt-4">
-            {data?.map((pokemon) => (
-              <PokemonCard key={pokemon.id} pokemon={pokemon} />
-            ))}
-          </div>
+          <PokemonList searchParams={searchParams} />
         </Suspense>
       </main>
     </section>
