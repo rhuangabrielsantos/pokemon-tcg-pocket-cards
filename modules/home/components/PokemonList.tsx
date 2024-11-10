@@ -11,7 +11,7 @@ const PokemonList = async (props: IHomePageProps) => {
   const { searchParams } = props;
 
   const response = await fetch(
-    `https://pokemon-tcg-pocket-cards.vercel.app/api/pokemons?name=${searchParams.name}&type=${searchParams.type}`
+    `${process.env.API_URL}/api/pokemons?name=${searchParams.name}&type=${searchParams.type}`
   );
 
   if (!response.ok) {

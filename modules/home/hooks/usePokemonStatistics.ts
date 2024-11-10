@@ -25,19 +25,19 @@ export const usePokemonStatistics = () => {
     setCharizardBoosterCardsObtained(
       storage
         .getItem<string[]>("claimed-pokemons")
-        .filter((card) => charizardBoosterCards.includes(card))
+        ?.filter((card) => charizardBoosterCards.includes(card)) ?? []
     );
 
     setPickachuBoosterCardsObtained(
       storage
         .getItem<string[]>("claimed-pokemons")
-        .filter((card) => pickachuBoosterCards.includes(card))
+        ?.filter((card) => pickachuBoosterCards.includes(card)) ?? []
     );
 
     setMewtwoBoosterCardsObtained(
       storage
         .getItem<string[]>("claimed-pokemons")
-        .filter((card) => mewtwoBoosterCards.includes(card))
+        ?.filter((card) => mewtwoBoosterCards.includes(card)) ?? []
     );
   };
 
