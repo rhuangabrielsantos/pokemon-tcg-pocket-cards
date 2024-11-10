@@ -17,9 +17,10 @@ const HomePage = async (props: IHomePageProps) => {
   const { searchParams } = props;
 
   const response = await fetch(
-    `${process.env.API_URL}/api/pokemons?name=${searchParams.name}&type=${searchParams.type}`
+    `https://pokemon-tcg-pocket-cards.vercel.app/api/pokemons?name=${searchParams.name}&type=${searchParams.type}`
   );
-  const data: IPokemon[] | undefined = await response.json();
+
+  const data: IPokemon[] = await response.json();
 
   return (
     <section className="flex justify-start flex-col gap-8">
