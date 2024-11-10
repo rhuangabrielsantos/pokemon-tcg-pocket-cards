@@ -1,0 +1,67 @@
+"use client";
+
+import Image from "next/image";
+import { usePokemonStatistics } from "../hooks/usePokemonStatistics";
+
+const PokemonStatistics = () => {
+  const {
+    charizardBoosterCardsObtained,
+    charizardBoosterCards,
+
+    mewtwoBoosterCardsObtained,
+    mewtwoBoosterCards,
+
+    pickachuBoosterCardsObtained,
+    pickachuBoosterCards,
+  } = usePokemonStatistics();
+
+  return (
+    <div className="flex flex-col items-center justify-center gap-6">
+      <h3 className="font-sans text-xl text-slate-600">
+        Essas são as suas estatísticas (cartas obtidas do pacote / total cartas
+        do pacote), atualize os dados clicando nas cartas abaixo para saber
+        quais pacotes abrir para completar a coleção.
+      </h3>
+
+      <div className="flex items-center justify-center gap-6">
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Image
+            src="/charizard.jpg"
+            alt="Pacote charizard"
+            width={100}
+            height={300}
+          />
+          <h4 className="font-sans text-xl text-slate-600">
+            {charizardBoosterCardsObtained.length} /{" "}
+            {charizardBoosterCards.length}
+          </h4>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Image
+            src="/mewtwo.jpg"
+            alt="Pacote charizard"
+            width={100}
+            height={300}
+          />
+          <h4 className="font-sans text-xl text-slate-600">
+            {mewtwoBoosterCardsObtained.length} / {mewtwoBoosterCards.length}
+          </h4>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Image
+            src="/pikachu.jpg"
+            alt="Pacote charizard"
+            width={100}
+            height={300}
+          />
+          <h4 className="font-sans text-xl text-slate-600">
+            {pickachuBoosterCardsObtained.length} /{" "}
+            {pickachuBoosterCards.length}
+          </h4>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default PokemonStatistics;
