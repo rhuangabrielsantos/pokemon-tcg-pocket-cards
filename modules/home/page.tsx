@@ -19,7 +19,7 @@ const HomePage = async (props: IHomePageProps) => {
   const response = await fetch(
     `${process.env.API_URL}/api/pokemons?name=${searchParams.name}&type=${searchParams.type}`
   );
-  const data: IPokemon[] = await response.json();
+  const data: IPokemon[] | undefined = await response.json();
 
   return (
     <section className="flex justify-start flex-col gap-8">
@@ -35,7 +35,7 @@ const HomePage = async (props: IHomePageProps) => {
 
         <Suspense fallback={<Skeleton className="w-full h-full" />}>
           <div className="grid grid-cols-5 gap-4 mt-4">
-            {data.map((pokemon) => (
+            {data?.map((pokemon) => (
               <PokemonCard key={pokemon.id} pokemon={pokemon} />
             ))}
           </div>
