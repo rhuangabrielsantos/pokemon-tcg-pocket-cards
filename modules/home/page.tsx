@@ -17,7 +17,7 @@ const HomePage = async (props: IHomePageProps) => {
   const { searchParams } = props;
 
   const response = await fetch(
-    `http://localhost:3000/api/pokemons?name=${searchParams.name}&type=${searchParams.type}`
+    `${process.env.API_URL}/api/pokemons?name=${searchParams.name}&type=${searchParams.type}`
   );
   const data: IPokemon[] = await response.json();
 

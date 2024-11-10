@@ -6,6 +6,7 @@ import "./globals.css";
 const nunito = Nunito({
   weight: ["400", "700"],
   display: "swap",
+  preload: false,
 });
 
 export const metadata: Metadata = {
