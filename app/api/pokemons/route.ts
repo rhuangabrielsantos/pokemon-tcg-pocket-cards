@@ -17,21 +17,30 @@ export async function GET(request: NextRequest) {
 
   let data: IPokemon[] = [];
 
-  const response = await fetch(
-    "https://raw.githubusercontent.com/chase-manning/pokemon-tcg-pocket-cards/refs/heads/main/v1.json"
-  );
-  const jsonData: IPokemon[] = await response.json();
-  data = jsonData;
+  try {
+    const response = await fetch(
+      "https://raw.githubusercontent.com/chase-manning/pokemon-tcg-pocket-cards/refs/heads/main/v1.json"
+    );
+    const jsonData: IPokemon[] = await response.json();
+    data = jsonData;
 
-  if (searchParams.get("name") !== "undefined") {
-    const name = searchParams.get("name")!.toLocaleLowerCase();
-    data = data.filter((pokemon) => pokemon.name.toLowerCase().includes(name));
+    if (searchParams.get("name") !== "undefined") {
+      const name = searchParams.get("name")!.toLocaleLowerCase();
+      data = data.filter((pokemon) =>
+        pokemon.name.toLowerCase().includes(name)
+      );
+    }
+
+    if (searchParams.get("type") !== "undefined") {
+      const type = searchParams.get("type")!.toLocaleLowerCase();
+      data = data.filter((pokemon) =>
+        pokemon.type.toLowerCase().includes(type)
+      );
+    }
+
+    return Response.json(data);
+  } catch (error) {
+    console.log(error);
+    return Response.error();
   }
-
-  if (searchParams.get("type") !== "undefined") {
-    const type = searchParams.get("type")!.toLocaleLowerCase();
-    data = data.filter((pokemon) => pokemon.type.toLowerCase().includes(type));
-  }
-
-  return Response.json(data);
 }
