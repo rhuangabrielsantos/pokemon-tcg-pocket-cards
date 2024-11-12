@@ -22,19 +22,19 @@ const PokemonListFilters = () => {
   } = usePokemonListFilters();
 
   return (
-    <>
+    <div className="w-full flex flex-col gap-2">
       <h3 className="text-lg font-bold font-sans">Filtros</h3>
 
-      <section className="flex items-center justify-start gap-4">
+      <section className="flex flex-col items-start justify-start gap-4 md:items-center md:flex-row">
         <Input
           type="text"
           placeholder="Nome do pokemon"
-          className="w-[250px]"
+          className="w-full md:w-[250px]"
           value={name}
           onChange={(e) => setName(e.target.value)}
         />
         <Select value={type} onValueChange={(value) => setType(value)}>
-          <SelectTrigger className="w-[300px]">
+          <SelectTrigger className="w-full md:w-[300px]">
             <SelectValue placeholder="Selecione o tipo do pokemon" />
           </SelectTrigger>
           <SelectContent>
@@ -49,12 +49,18 @@ const PokemonListFilters = () => {
           </SelectContent>
         </Select>
 
-        <Button onClick={handleFilterCards}>Filtrar</Button>
-        <Button variant="outline" onClick={handleClearFilters}>
+        <Button onClick={handleFilterCards} className="w-full md:w-auto">
+          Filtrar
+        </Button>
+        <Button
+          variant="outline"
+          onClick={handleClearFilters}
+          className="w-full md:w-auto"
+        >
           Limpar
         </Button>
       </section>
-    </>
+    </div>
   );
 };
 

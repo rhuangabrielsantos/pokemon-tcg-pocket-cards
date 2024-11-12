@@ -1,0 +1,39 @@
+.card {
+  width: 180px;
+  height: 250px;
+  box-shadow: 0 1px 5px #00000099;
+
+  border-radius: 10px;
+  background-size: cover;
+
+  position: relative;
+
+  transition-duration: 300ms;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-out;
+  transform: rotate3d(0);
+}
+
+@media (min-width: 640px) {
+  .card {
+    width: 230px;
+    height: 320px;
+  }
+}
+
+.card:hover {
+  transition-duration: 150ms;
+  box-shadow: 0 5px 20px 5px #00000044;
+
+  z-index: 1;
+}
+
+.card .glow {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  background-image: radial-gradient(circle at 50% -20%, #ffffff22, #0000000f);
+}

@@ -16,14 +16,14 @@ const HomePage = async (props: IHomePageProps) => {
   const { searchParams } = props;
 
   return (
-    <section className="flex justify-start flex-col gap-8">
+    <section className="flex justify-start flex-col gap-8 p-6">
       <header className="flex justify-start flex-col">
         <h1 className="text-4xl font-bold text-slate-800  font-sans">
           Coleção Cartas Pokemon TCG Pocket
         </h1>
       </header>
 
-      <main className="flex flex-col gap-2">
+      <main className="flex flex-col items-center gap-2 max-w-[1200px] w-full">
         <PokemonStatistics />
         <PokemonListFilters />
 

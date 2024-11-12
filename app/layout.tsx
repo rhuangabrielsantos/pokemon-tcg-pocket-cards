@@ -22,14 +22,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={nunito.className}>
-      <body>
-        <div className="grid grid-cols-[300px_minmax(900px,_1fr)_300px] w-screen h-screen antialiased">
-          <div className="w-full h-full" />
-          {children}
-
-          <Analytics />
-          <div className="w-full h-full" />
-        </div>
+      <body className="flex justify-center">
+        {children}
+        <Analytics />
       </body>
     </html>
   );

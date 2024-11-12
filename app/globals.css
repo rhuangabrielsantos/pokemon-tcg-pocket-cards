@@ -4,6 +4,7 @@
 
 body {
   font-family: Arial, Helvetica, sans-serif;
+  perspective: 10000px;
 }
 
 @layer base {
