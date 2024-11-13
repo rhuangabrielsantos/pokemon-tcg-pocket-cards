@@ -12,6 +12,8 @@
   transition-property: transform, box-shadow;
   transition-timing-function: ease-out;
   transform: rotate3d(0);
+
+  cursor: pointer;
 }
 
 @media (min-width: 640px) {
