@@ -1,8 +1,11 @@
 "use client";
 
+import dynamic from "next/dynamic";
+
 import { IPokemon } from "@/app/api/pokemons/route";
+const Card = dynamic(() => import("@/components/ui/card"));
+
 import { usePokemonCard } from "../hooks/usePokemonCard";
-import Card from "@/components/ui/card";
 
 interface IPokemonCardProps {
   pokemon: IPokemon;

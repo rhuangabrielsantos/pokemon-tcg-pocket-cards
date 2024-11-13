@@ -34,7 +34,10 @@ const PokemonListFilters = () => {
           onChange={(e) => setName(e.target.value)}
         />
         <Select value={type} onValueChange={(value) => setType(value)}>
-          <SelectTrigger className="w-full md:w-[300px]">
+          <SelectTrigger
+            className="w-full md:w-[300px]"
+            aria-label="Selecione o tipo do pokemon"
+          >
             <SelectValue placeholder="Selecione o tipo do pokemon" />
           </SelectTrigger>
           <SelectContent>
