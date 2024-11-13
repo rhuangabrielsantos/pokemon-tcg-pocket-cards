@@ -87,16 +87,17 @@ const Card = (props: ICardProps) => {
   }, []);
 
   return (
-    <div
-      ref={cardRef}
-      className={styles.card}
-      style={{
-        backgroundImage: `url(${src})`,
-        filter: hasGrayScale ? "grayscale(100%)" : "none",
-      }}
-      onClick={onClick}
-    >
-      <div className={styles.glow} />
+    <div ref={cardRef} className={styles.card}>
+      <div
+        className={styles.card}
+        style={{
+          backgroundImage: `url(${src})`,
+          filter: hasGrayScale ? "grayscale(100%)" : "none",
+        }}
+        onClick={onClick}
+      >
+        <div className={styles.glow} />
+      </div>
 
       <div className="absolute bottom-2 right-2 flex gap-1 md:bottom-4 md:right-4">
         {boosters?.map((src, index) => (
@@ -104,9 +105,10 @@ const Card = (props: ICardProps) => {
             key={index}
             src={src}
             alt="booster pack"
-            width={30}
-            height={20}
+            width={60}
+            height={30}
             title="Booster Pack que contém este Pokémon"
+            style={{ filter: "none" }}
           />
         ))}
       </div>

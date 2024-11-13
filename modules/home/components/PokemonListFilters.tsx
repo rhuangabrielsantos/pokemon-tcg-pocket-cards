@@ -49,13 +49,18 @@ const PokemonListFilters = () => {
           </SelectContent>
         </Select>
 
-        <Button onClick={handleFilterCards} className="w-full md:w-auto">
+        <Button
+          onClick={handleFilterCards}
+          className="w-full md:w-auto"
+          aria-label="Filtrar"
+        >
           Filtrar
         </Button>
         <Button
           variant="outline"
           onClick={handleClearFilters}
           className="w-full md:w-auto"
+          aria-label="Limpar"
         >
           Limpar
         </Button>
