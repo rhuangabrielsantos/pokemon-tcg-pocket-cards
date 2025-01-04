@@ -65,7 +65,7 @@ const PokemonList = ({ data, itemsPerPage = 10 }: IHomePageProps) => {
 
   return (
     <>
-      <div className="grid grid-cols-2 gap-4 mt-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full">
+      <div className="flex flex-wrap justify-center items-center gap-4 w-full">
         {displayedItems.map((pokemon) => (
           <PokemonCard
             key={pokemon.id}

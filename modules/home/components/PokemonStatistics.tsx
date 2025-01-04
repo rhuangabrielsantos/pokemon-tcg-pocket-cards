@@ -20,12 +20,6 @@ const PokemonStatistics = () => {
 
   return (
     <div className="flex flex-col items-center justify-center gap-6">
-      <h2 className="font-sans text-xl text-slate-600">
-        Essas são as suas estatísticas (cartas obtidas do pacote / total cartas
-        do pacote), atualize os dados clicando nas cartas abaixo para saber
-        quais pacotes abrir para completar a coleção.
-      </h2>
-
       <div className="flex items-center justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-2">
           <Image

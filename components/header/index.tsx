@@ -33,7 +33,7 @@ const Header = () => {
   };
 
   return isAuthenticated ? (
-    <header className="w-full flex items-center justify-between px-4">
+    <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
       <div className="flex items-center justify-center gap-2">
         <Image
           src={user?.photoURL ?? ""}
@@ -62,7 +62,7 @@ const Header = () => {
       </div>
     </header>
   ) : (
-    <header className="w-full flex items-center justify-between px-4">
+    <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between px-4 gap-4">
       <p className="text-lg font-medium text-slate-600  font-sans">
         Faça login para salvar suas cartas e visualizá-las em todos os seus
         dispositivos!

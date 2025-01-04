@@ -1,7 +1,3 @@
-import { Suspense } from "react";
-
-import { Skeleton } from "@/components/ui/skeleton";
-
 import PokemonList from "./components/PokemonList";
 import PokemonListFilters from "./components/PokemonListFilters";
 import PokemonStatistics from "./components/PokemonStatistics";
@@ -27,20 +23,25 @@ const HomePage = async (props: IHomePageProps) => {
   const data: IPokemon[] = await response.json();
 
   return (
-    <section className="flex justify-start flex-col gap-8 p-6">
+    <section className="flex justify-start flex-col gap-8">
       <div className="flex justify-start flex-col">
         <h1 className="text-4xl font-bold text-slate-800  font-sans">
           Coleção Cartas Pokemon TCG Pocket
         </h1>
+
+        <h2 className="font-sans text-xl text-slate-600 pb-8">
+          Essas são as suas estatísticas (cartas obtidas do pacote / total
+          cartas do pacote), atualize os dados clicando nas cartas abaixo para
+          saber quais pacotes abrir para completar a coleção.
+        </h2>
+
+        <PokemonStatistics />
       </div>
 
-      <main className="flex flex-col items-center gap-2 max-w-[1200px] w-full">
-        <PokemonStatistics />
+      <main className="flex flex-col items-center gap-10">
         <PokemonListFilters />
 
-        <Suspense fallback={<Skeleton className="w-full h-full" />}>
-          <PokemonList data={data} />
-        </Suspense>
+        <PokemonList data={data} />
       </main>
     </section>
   );

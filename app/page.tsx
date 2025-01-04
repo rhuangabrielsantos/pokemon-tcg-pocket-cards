@@ -13,7 +13,7 @@ export default function Home(props: IHomeProps) {
   const searchParams = use(props.searchParams);
 
   return (
-    <div className="flex flex-col gap-4 items-start pt-8 justify-start">
+    <div className="flex flex-col gap-6 items-start pt-8 justify-start w-[1250px] px-4">
       <Header />
 
       <HomePage searchParams={searchParams} />

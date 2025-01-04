@@ -1,3 +1,5 @@
+"use client";
+
 import { localStorageAdapter } from "@/contexts/Storage/LocalStorageAdapter";
 import { useCallback, useEffect, useState } from "react";
 import {
@@ -12,11 +14,23 @@ import {
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/useAuth";
 import { useClaimedPokemons } from "../hooks/useClaimedPokemons";
+import {
+  Drawer,
+  DrawerClose,
+  DrawerContent,
+  DrawerDescription,
+  DrawerFooter,
+  DrawerHeader,
+  DrawerTitle,
+} from "@/components/ui/drawer";
+import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const DialogImportLocalStorageCards = () => {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [localStorageCards, setLocalStorageCards] = useState<string[]>([]);
   const [firestoreCards, setFirestoreCards] = useState<string[]>([]);
+
+  const isSmallDevice = useMediaQuery("(max-width : 768px)");
 
   const { isAuthenticated } = useAuth();
   const { getClaimedPokemons, setClaimedPokemons } = useClaimedPokemons();
@@ -69,7 +83,39 @@ const DialogImportLocalStorageCards = () => {
     onVerifyImportIsAvailable();
   }, [onVerifyImportIsAvailable, isAuthenticated]);
 
-  return (
+  return isSmallDevice ? (
+    <Drawer open={dialogOpen} onOpenChange={(open) => setDialogOpen(open)}>
+      <DrawerContent>
+        <div className="mx-auto w-full max-w-sm">
+          <DrawerHeader>
+            <DrawerTitle>Importação de cartas para sua conta!</DrawerTitle>
+            <DrawerDescription>
+              {" "}
+              Notamos que você possui cartas salvas em seu navegador, deseja
+              importá-las para sua conta?
+            </DrawerDescription>
+
+            <DrawerDescription>
+              Caso você importe as cartas, as cartas salvas no navegador serão
+              removidas e adicionadas a sua conta.
+            </DrawerDescription>
+          </DrawerHeader>
+        </div>
+
+        <DrawerFooter>
+          <Button type="button" onClick={onImportCards}>
+            Importar
+          </Button>
+
+          <DrawerClose asChild>
+            <Button type="button" variant="secondary" onClick={onCancelImport}>
+              Cancelar
+            </Button>
+          </DrawerClose>
+        </DrawerFooter>
+      </DrawerContent>
+    </Drawer>
+  ) : (
     <Dialog open={dialogOpen} onOpenChange={(open) => setDialogOpen(open)}>
       <DialogContent>
         <DialogHeader>
