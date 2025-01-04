@@ -3,6 +3,7 @@ import { useState } from "react";
 import {
   charizardBoosterCards,
   mewtwoBoosterCards,
+  mythicalIslandCards,
   pickachuBoosterCards,
 } from "@/constants/boosterCards";
 import { useStorageContext } from "@/contexts/Storage";
@@ -19,6 +20,9 @@ export const usePokemonStatistics = () => {
   >([]);
 
   const [pickachuBoosterCardsObtained, setPickachuBoosterCardsObtained] =
+    useState<string[]>([]);
+
+  const [mythicalIslandCardsObtained, setMythicalIslandCardsCardsObtained] =
     useState<string[]>([]);
 
   const handleCountBoosterCards = () => {
@@ -39,6 +43,12 @@ export const usePokemonStatistics = () => {
         .getItem<string[]>("claimed-pokemons")
         ?.filter((card) => mewtwoBoosterCards.includes(card)) ?? []
     );
+
+    setMythicalIslandCardsCardsObtained(
+      storage
+        .getItem<string[]>("claimed-pokemons")
+        ?.filter((card) => mythicalIslandCards.includes(card)) ?? []
+    );
   };
 
   useDidMount(() => {
@@ -56,5 +66,8 @@ export const usePokemonStatistics = () => {
 
     pickachuBoosterCardsObtained,
     pickachuBoosterCards,
+
+    mythicalIslandCardsObtained,
+    mythicalIslandCards,
   };
 };

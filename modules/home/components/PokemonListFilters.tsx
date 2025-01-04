@@ -14,9 +14,11 @@ import { usePokemonListFilters } from "../hooks/usePokemonListFilters";
 const PokemonListFilters = () => {
   const {
     name,
-    type,
     setName,
+    type,
     setType,
+    pack,
+    setPack,
     handleFilterCards,
     handleClearFilters,
   } = usePokemonListFilters();
@@ -49,6 +51,21 @@ const PokemonListFilters = () => {
             <SelectItem value="fighting">Luta</SelectItem>
             <SelectItem value="darkness">Escuridão</SelectItem>
             <SelectItem value="metal">Metal</SelectItem>
+          </SelectContent>
+        </Select>
+
+        <Select value={pack} onValueChange={(value) => setPack(value)}>
+          <SelectTrigger
+            className="w-full md:w-[300px]"
+            aria-label="Selecione o pacote"
+          >
+            <SelectValue placeholder="Selecione o pacote" />
+          </SelectTrigger>
+          <SelectContent>
+            <SelectItem value="Mewtwo">Genetic Apex Mewtwo</SelectItem>
+            <SelectItem value="Pikachu">Genetic Apex Pikachu</SelectItem>
+            <SelectItem value="Charizard">Genetic Apex Charizard</SelectItem>
+            <SelectItem value="Mythical Island">Mystical Island</SelectItem>
           </SelectContent>
         </Select>
 

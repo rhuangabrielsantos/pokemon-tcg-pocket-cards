@@ -7,19 +7,18 @@ export interface IPokemon {
   pack: string;
   type: string;
   health: number | null;
-  stage: string | null;
-  craftingCost: number | null;
   image: string;
 }
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
+  console.log(searchParams);
 
   let data: IPokemon[] | undefined = [];
 
   try {
     const response = await fetch(
-      "https://raw.githubusercontent.com/chase-manning/pokemon-tcg-pocket-cards/refs/heads/main/v1.json"
+      "https://raw.githubusercontent.com/chase-manning/pokemon-tcg-pocket-cards/refs/heads/main/v2.json"
     );
     const jsonData: IPokemon[] | undefined = await response.json();
     data = jsonData;
@@ -35,6 +34,13 @@ export async function GET(request: NextRequest) {
       const type = searchParams.get("type")!.toLocaleLowerCase();
       data = data?.filter((pokemon) =>
         pokemon.type.toLowerCase().includes(type)
+      );
+    }
+
+    if (searchParams.get("pack") !== "undefined") {
+      const pack = searchParams.get("pack")!.toLocaleLowerCase();
+      data = data?.filter((pokemon) =>
+        pokemon.pack.toLowerCase().includes(pack)
       );
     }
 

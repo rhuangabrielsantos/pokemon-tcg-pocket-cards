@@ -13,6 +13,9 @@ const PokemonStatistics = () => {
 
     pickachuBoosterCardsObtained,
     pickachuBoosterCards,
+
+    mythicalIslandCardsObtained,
+    mythicalIslandCards,
   } = usePokemonStatistics();
 
   return (
@@ -57,6 +60,17 @@ const PokemonStatistics = () => {
           <h3 className="font-sans text-xl text-slate-600">
             {pickachuBoosterCardsObtained.length} /{" "}
             {pickachuBoosterCards.length}
+          </h3>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Image
+            src="/mystical-island.png"
+            alt="Pacote charizard"
+            width={100}
+            height={300}
+          />
+          <h3 className="font-sans text-xl text-slate-600">
+            {mythicalIslandCardsObtained.length} / {mythicalIslandCards.length}
           </h3>
         </div>
       </div>

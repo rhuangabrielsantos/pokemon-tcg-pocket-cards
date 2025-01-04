@@ -8,6 +8,7 @@ export const usePokemonListFilters = () => {
 
   const [name, setName] = useState<string>(searchParams.get("name") || "");
   const [type, setType] = useState<string>(searchParams.get("type") || "");
+  const [pack, setPack] = useState<string>(searchParams.get("pack") || "");
 
   const handleFilterCards = useCallback(() => {
     const params = new URLSearchParams(searchParams.toString());
@@ -24,21 +25,30 @@ export const usePokemonListFilters = () => {
       params.delete("type");
     }
 
+    if (pack) {
+      params.set("pack", pack);
+    } else {
+      params.delete("pack");
+    }
+
     router.push(pathname + "?" + params.toString());
-  }, [name, pathname, router, searchParams, type]);
+  }, [name, pathname, router, searchParams, type, pack]);
 
   const handleClearFilters = useCallback(() => {
     setName("");
     setType("");
+    setPack("");
 
     router.push(pathname);
   }, [pathname, router]);
 
   return {
     name,
-    type,
     setName,
+    type,
     setType,
+    pack,
+    setPack,
     handleFilterCards,
     handleClearFilters,
   };

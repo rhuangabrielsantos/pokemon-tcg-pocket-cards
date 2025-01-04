@@ -19,6 +19,7 @@ export const usePokemonCard = ({ pokemon }: IUsePokemonCardProps) => {
       Pikachu: ["/pikachu.jpg"],
       Promo: ["/promo.webp"],
       Any: ["/mewtwo.jpg", "/charizard.jpg", "/pikachu.jpg"],
+      "Mythical Island": ["/mystical-island.png"],
     };
 
     return boosters[pokemon.pack as keyof typeof boosters];
