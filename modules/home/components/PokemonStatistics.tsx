@@ -64,7 +64,7 @@ const PokemonStatistics = () => {
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
-            src="/mystical-island.png"
+            src="/mytical-island.png"
             alt="Pacote charizard"
             width={100}
             height={300}
