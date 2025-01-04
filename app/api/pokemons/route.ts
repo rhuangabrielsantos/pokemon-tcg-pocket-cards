@@ -12,7 +12,6 @@ export interface IPokemon {
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
-  console.log(searchParams);
 
   let data: IPokemon[] | undefined = [];
 

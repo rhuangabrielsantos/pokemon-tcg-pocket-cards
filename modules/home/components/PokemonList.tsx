@@ -3,6 +3,8 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { IPokemon } from "@/app/api/pokemons/route";
 import PokemonCard from "./PokemonCard";
+import { useClaimedPokemons } from "../hooks/useClaimedPokemons";
+import DialogImportLocalStorageCards from "./DialogImportLocalStorageCards";
 
 interface IHomePageProps {
   data: IPokemon[];
@@ -12,6 +14,10 @@ interface IHomePageProps {
 const PokemonList = ({ data, itemsPerPage = 10 }: IHomePageProps) => {
   const [displayedItems, setDisplayedItems] = useState<IPokemon[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [claimedPokemons, setClaimedPokemons] = useState<string[]>([]);
+
+  const { getClaimedPokemons } = useClaimedPokemons();
+
   const loaderRef = useRef<HTMLDivElement>(null);
 
   const handleObserver = useCallback(
@@ -49,11 +55,23 @@ const PokemonList = ({ data, itemsPerPage = 10 }: IHomePageProps) => {
     setDisplayedItems(newItems);
   }, [currentPage, data, itemsPerPage]);
 
+  useEffect(() => {
+    const handleClaimedPokemons = async () => {
+      setClaimedPokemons(await getClaimedPokemons());
+    };
+
+    handleClaimedPokemons();
+  }, [getClaimedPokemons]);
+
   return (
     <>
       <div className="grid grid-cols-2 gap-4 mt-4 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 w-full">
         {displayedItems.map((pokemon) => (
-          <PokemonCard key={pokemon.id} pokemon={pokemon} />
+          <PokemonCard
+            key={pokemon.id}
+            pokemon={pokemon}
+            claimedPokemons={claimedPokemons}
+          />
         ))}
       </div>
 
@@ -65,6 +83,8 @@ const PokemonList = ({ data, itemsPerPage = 10 }: IHomePageProps) => {
           <div className="animate-spin h-8 w-8 border-4 border-blue-500 rounded-full border-t-transparent"></div>
         </div>
       )}
+
+      <DialogImportLocalStorageCards />
     </>
   );
 };

@@ -4,14 +4,16 @@ import { EventEmitter } from "events";
 export class LocalStorageAdapter implements IStorage {
   private eventEmitter = new EventEmitter();
 
-  getItem<T>(key: string): T {
+  getItem<T>(key: string): Promise<T> {
     const item = localStorage.getItem(key);
     return item ? JSON.parse(item) : null;
   }
 
-  setItem<T>(key: string, value: T): void {
+  setItem<T>(key: string, value: T): Promise<void> {
     localStorage.setItem(key, JSON.stringify(value));
     this.emitUpdate();
+
+    return Promise.resolve();
   }
 
   emitUpdate() {

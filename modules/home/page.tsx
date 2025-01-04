@@ -28,11 +28,11 @@ const HomePage = async (props: IHomePageProps) => {
 
   return (
     <section className="flex justify-start flex-col gap-8 p-6">
-      <header className="flex justify-start flex-col">
+      <div className="flex justify-start flex-col">
         <h1 className="text-4xl font-bold text-slate-800  font-sans">
           Coleção Cartas Pokemon TCG Pocket
         </h1>
-      </header>
+      </div>
 
       <main className="flex flex-col items-center gap-2 max-w-[1200px] w-full">
         <PokemonStatistics />

@@ -3,21 +3,22 @@
 import dynamic from "next/dynamic";
 
 import { IPokemon } from "@/app/api/pokemons/route";
-const Card = dynamic(() => import("@/components/ui/card"));
+const Card = dynamic(() => import("@/components/card"));
 
 import { usePokemonCard } from "../hooks/usePokemonCard";
 
 interface IPokemonCardProps {
   pokemon: IPokemon;
+  claimedPokemons: string[];
 }
 
-const PokemonCard = ({ pokemon }: IPokemonCardProps) => {
+const PokemonCard = ({ pokemon, claimedPokemons }: IPokemonCardProps) => {
   const {
     isClaimed,
     boosterPackSrc,
     handleClaimPokemon,
     handleReleasePokemon,
-  } = usePokemonCard({ pokemon });
+  } = usePokemonCard({ pokemon, claimedPokemons });
 
   return isClaimed ? (
     <Card src={pokemon.image} onClick={handleReleasePokemon} />

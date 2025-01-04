@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 import {
   charizardBoosterCards,
@@ -6,11 +6,15 @@ import {
   mythicalIslandCards,
   pickachuBoosterCards,
 } from "@/constants/boosterCards";
-import { useStorageContext } from "@/contexts/Storage";
-import { useDidMount } from "@/hooks/useDidMount";
+import { useClaimedPokemons } from "./useClaimedPokemons";
+import { collection, onSnapshot } from "firebase/firestore";
+import { localStorageAdapter } from "@/contexts/Storage/LocalStorageAdapter";
+import { db } from "@/lib/firebase";
+import { useAuth } from "@/hooks/useAuth";
 
 export const usePokemonStatistics = () => {
-  const { state: storage } = useStorageContext();
+  const { getClaimedPokemons } = useClaimedPokemons();
+  const { user, isAuthenticated } = useAuth();
 
   const [charizardBoosterCardsObtained, setCharizardBoosterCardsObtained] =
     useState<string[]>([]);
@@ -25,37 +29,46 @@ export const usePokemonStatistics = () => {
   const [mythicalIslandCardsObtained, setMythicalIslandCardsCardsObtained] =
     useState<string[]>([]);
 
-  const handleCountBoosterCards = () => {
+  const handleCountBoosterCards = async (claimedPokemons: string[]) => {
     setCharizardBoosterCardsObtained(
-      storage
-        .getItem<string[]>("claimed-pokemons")
-        ?.filter((card) => charizardBoosterCards.includes(card)) ?? []
+      claimedPokemons.filter((card) => charizardBoosterCards.includes(card))
     );
 
     setPickachuBoosterCardsObtained(
-      storage
-        .getItem<string[]>("claimed-pokemons")
-        ?.filter((card) => pickachuBoosterCards.includes(card)) ?? []
+      claimedPokemons.filter((card) => pickachuBoosterCards.includes(card))
     );
 
     setMewtwoBoosterCardsObtained(
-      storage
-        .getItem<string[]>("claimed-pokemons")
-        ?.filter((card) => mewtwoBoosterCards.includes(card)) ?? []
+      claimedPokemons.filter((card) => mewtwoBoosterCards.includes(card))
     );
 
     setMythicalIslandCardsCardsObtained(
-      storage
-        .getItem<string[]>("claimed-pokemons")
-        ?.filter((card) => mythicalIslandCards.includes(card)) ?? []
+      claimedPokemons.filter((card) => mythicalIslandCards.includes(card))
     );
   };
 
-  useDidMount(() => {
-    storage.onUpdate(() => handleCountBoosterCards());
+  useEffect(() => {
+    if (!isAuthenticated) {
+      const onGetClaimedPokemons = async () => {
+        localStorageAdapter.onUpdate(async () => {
+          const claimedPokemons = await getClaimedPokemons();
+          handleCountBoosterCards(claimedPokemons);
+        });
 
-    handleCountBoosterCards();
-  });
+        const claimedPokemons = await getClaimedPokemons();
+        handleCountBoosterCards(claimedPokemons);
+      };
+
+      onGetClaimedPokemons();
+      return;
+    }
+
+    const collectionRef = collection(db, user.uid);
+    onSnapshot(collectionRef, (snapshot) => {
+      const document = snapshot.docs.map((doc) => doc.data());
+      handleCountBoosterCards(document[0].claimedCards);
+    });
+  }, [getClaimedPokemons, isAuthenticated, user?.uid]);
 
   return {
     charizardBoosterCardsObtained,

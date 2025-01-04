@@ -1,14 +1,18 @@
 import { useEffect, useMemo, useState } from "react";
 
 import { IPokemon } from "@/app/api/pokemons/route";
-import { useStorageContext } from "@/contexts/Storage";
+import { useClaimedPokemons } from "./useClaimedPokemons";
 
 interface IUsePokemonCardProps {
   pokemon: IPokemon;
+  claimedPokemons: string[];
 }
 
-export const usePokemonCard = ({ pokemon }: IUsePokemonCardProps) => {
-  const { state: storage } = useStorageContext();
+export const usePokemonCard = ({
+  pokemon,
+  claimedPokemons,
+}: IUsePokemonCardProps) => {
+  const { getClaimedPokemons, setClaimedPokemons } = useClaimedPokemons();
 
   const [isClaimed, setIsClaimed] = useState(false);
 
@@ -19,34 +23,29 @@ export const usePokemonCard = ({ pokemon }: IUsePokemonCardProps) => {
       Pikachu: ["/pikachu.jpg"],
       Promo: ["/promo.webp"],
       Any: ["/mewtwo.jpg", "/charizard.jpg", "/pikachu.jpg"],
-      "Mythical Island": ["/mystical-island.png"],
+      "Mythical Island": ["/mytical-island.png"],
     };
 
     return boosters[pokemon.pack as keyof typeof boosters];
   }, [pokemon.pack]);
 
-  const handleClaimPokemon = () => {
-    const pokemons = storage.getItem<string[]>("claimed-pokemons") ?? [];
+  const handleClaimPokemon = async () => {
+    const pokemons = await getClaimedPokemons();
 
-    storage.setItem("claimed-pokemons", [...pokemons, pokemon.id]);
+    setClaimedPokemons([...pokemons, pokemon.id]);
     setIsClaimed(true);
   };
 
-  const handleReleasePokemon = () => {
-    const pokemons = storage.getItem<string[]>("claimed-pokemons") ?? [];
+  const handleReleasePokemon = async () => {
+    const pokemons = await getClaimedPokemons();
 
-    storage.setItem(
-      "claimed-pokemons",
-      pokemons.filter((id) => id !== pokemon.id)
-    );
+    setClaimedPokemons(pokemons.filter((id) => id !== pokemon.id));
     setIsClaimed(false);
   };
 
   useEffect(() => {
-    const pokemons = storage.getItem<string[]>("claimed-pokemons") ?? [];
-
-    setIsClaimed(pokemons.includes(pokemon.id));
-  }, [pokemon.id, storage]);
+    setIsClaimed(claimedPokemons.includes(pokemon.id));
+  }, [claimedPokemons, pokemon.id]);
 
   return {
     isClaimed,

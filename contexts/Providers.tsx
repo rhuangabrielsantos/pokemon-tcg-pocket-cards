@@ -1,11 +1,11 @@
-import { StorageProvider } from "./Storage";
+import { AuthProvider } from "./Auth";
 
 interface IProvidersProps {
   children: React.ReactNode;
 }
 
 const Providers = ({ children }: IProvidersProps) => {
-  return <StorageProvider>{children}</StorageProvider>;
+  return <AuthProvider>{children}</AuthProvider>;
 };
 
 export { Providers };
