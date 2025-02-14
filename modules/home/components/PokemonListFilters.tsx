@@ -51,6 +51,10 @@ const PokemonListFilters = () => {
             <SelectItem value="fighting">Luta</SelectItem>
             <SelectItem value="darkness">Escuridão</SelectItem>
             <SelectItem value="metal">Metal</SelectItem>
+            <SelectItem value="dragon">Dragão</SelectItem>
+            <SelectItem value="normal">Normal</SelectItem>
+            <SelectItem value="item">Item</SelectItem>
+            <SelectItem value="coach">Treinadores</SelectItem>
           </SelectContent>
         </Select>
 
@@ -65,7 +69,12 @@ const PokemonListFilters = () => {
             <SelectItem value="Mewtwo">Genetic Apex Mewtwo</SelectItem>
             <SelectItem value="Pikachu">Genetic Apex Pikachu</SelectItem>
             <SelectItem value="Charizard">Genetic Apex Charizard</SelectItem>
-            <SelectItem value="Mythical Island">Mystical Island</SelectItem>
+            <SelectItem value="GeneticDomination">Genetic Apex</SelectItem>
+            <SelectItem value="MythicalIsland">Mystical Island</SelectItem>
+            <SelectItem value="Dialga">Space-Time Smackdown Dialga</SelectItem>
+            <SelectItem value="Palkia">Space-Time Smackdown Palkia</SelectItem>
+            <SelectItem value="SpaceTiming">Space-Time Smackdown</SelectItem>
+            <SelectItem value="Promo">Promo</SelectItem>
           </SelectContent>
         </Select>
 

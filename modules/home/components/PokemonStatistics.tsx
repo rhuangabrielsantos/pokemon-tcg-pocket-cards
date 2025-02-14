@@ -16,6 +16,12 @@ const PokemonStatistics = () => {
 
     mythicalIslandCardsObtained,
     mythicalIslandCards,
+
+    dialgaBoosterCardsObtained,
+    dialgaBoosterCards,
+
+    palkiaBoosterCardsObtained,
+    palkiaBoosterCards,
   } = usePokemonStatistics();
 
   return (
@@ -65,6 +71,29 @@ const PokemonStatistics = () => {
           />
           <h3 className="font-sans text-xl text-slate-600">
             {mythicalIslandCardsObtained.length} / {mythicalIslandCards.length}
+          </h3>
+        </div>
+
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Image
+            src="/dialga.png"
+            alt="Pacote charizard"
+            width={100}
+            height={300}
+          />
+          <h3 className="font-sans text-xl text-slate-600">
+            {dialgaBoosterCardsObtained.length} / {dialgaBoosterCards.length}
+          </h3>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Image
+            src="/palkia.png"
+            alt="Pacote charizard"
+            width={100}
+            height={300}
+          />
+          <h3 className="font-sans text-xl text-slate-600">
+            {palkiaBoosterCardsObtained.length} / {palkiaBoosterCards.length}
           </h3>
         </div>
       </div>

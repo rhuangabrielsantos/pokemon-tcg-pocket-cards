@@ -16,6 +16,13 @@ const nextConfig: NextConfig = {
         pathname:
           "/chase-manning/pokemon-tcg-pocket-cards/refs/heads/main/images/**",
       },
+      {
+        protocol: "https",
+        hostname: "limitlesstcg.nyc3.cdn.digitaloceanspaces.com",
+        port: "",
+        pathname:
+          "/pocket/**",
+      },
     ],
   },
 };

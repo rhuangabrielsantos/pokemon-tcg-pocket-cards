@@ -12,6 +12,15 @@ import { localStorageAdapter } from "@/contexts/Storage/LocalStorageAdapter";
 import { db } from "@/lib/firebase";
 import { useAuth } from "@/hooks/useAuth";
 
+import pokemons from "@/app/api/pokemons/pokemons.json";
+
+const dialgaBoosterCards = pokemons
+  .filter((pokemon) => ["SpaceTiming", "Dialga"].includes(pokemon.pack))
+  .map((pokemon) => pokemon.id);
+const palkiaBoosterCards = pokemons
+  .filter((pokemon) => ["SpaceTiming", "Palkia"].includes(pokemon.pack))
+  .map((pokemon) => pokemon.id);
+
 export const usePokemonStatistics = () => {
   const { getClaimedPokemons } = useClaimedPokemons();
   const { user, isAuthenticated } = useAuth();
@@ -29,6 +38,14 @@ export const usePokemonStatistics = () => {
   const [mythicalIslandCardsObtained, setMythicalIslandCardsCardsObtained] =
     useState<string[]>([]);
 
+  const [dialgaBoosterCardsObtained, setDialgaBoosterCardsObtained] = useState<
+    string[]
+  >([]);
+
+  const [palkiaBoosterCardsObtained, setPalkiaBoosterCardsObtained] = useState<
+    string[]
+  >([]);
+
   const handleCountBoosterCards = async (claimedPokemons: string[]) => {
     setCharizardBoosterCardsObtained(
       claimedPokemons.filter((card) => charizardBoosterCards.includes(card))
@@ -44,6 +61,14 @@ export const usePokemonStatistics = () => {
 
     setMythicalIslandCardsCardsObtained(
       claimedPokemons.filter((card) => mythicalIslandCards.includes(card))
+    );
+
+    setDialgaBoosterCardsObtained(
+      claimedPokemons.filter((card) => dialgaBoosterCards.includes(card))
+    );
+
+    setPalkiaBoosterCardsObtained(
+      claimedPokemons.filter((card) => palkiaBoosterCards.includes(card))
     );
   };
 
@@ -82,5 +107,11 @@ export const usePokemonStatistics = () => {
 
     mythicalIslandCardsObtained,
     mythicalIslandCards,
+
+    dialgaBoosterCardsObtained,
+    dialgaBoosterCards,
+
+    palkiaBoosterCardsObtained,
+    palkiaBoosterCards,
   };
 };

@@ -22,8 +22,11 @@ export const usePokemonCard = ({
       Charizard: ["/charizard.jpg"],
       Pikachu: ["/pikachu.jpg"],
       Promo: ["/promo.webp"],
-      Any: ["/mewtwo.jpg", "/charizard.jpg", "/pikachu.jpg"],
-      "Mythical Island": ["/mytical-island.png"],
+      GeneticDomination: ["/mewtwo.jpg", "/charizard.jpg", "/pikachu.jpg"],
+      MythicalIsland: ["/mytical-island.png"],
+      Palkia: ["/palkia.png"],
+      Dialga: ["/dialga.png"],
+      SpaceTiming: ["/palkia.png", "/dialga.png"],
     };
 
     return boosters[pokemon.pack as keyof typeof boosters];

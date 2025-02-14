@@ -1,27 +1,23 @@
 import { NextRequest } from "next/server";
 
+import pokemons from "./pokemons.json";
+
 export interface IPokemon {
   id: string;
   name: string;
   rarity: string;
-  pack: string;
   type: string;
-  health: number | null;
+  pack: string;
+  health: string;
   image: string;
 }
 
 export async function GET(request: NextRequest) {
   const { searchParams } = request.nextUrl;
 
-  let data: IPokemon[] | undefined = [];
+  let data: IPokemon[] | undefined = pokemons;
 
   try {
-    const response = await fetch(
-      "https://raw.githubusercontent.com/chase-manning/pokemon-tcg-pocket-cards/refs/heads/main/v2.json"
-    );
-    const jsonData: IPokemon[] | undefined = await response.json();
-    data = jsonData;
-
     if (searchParams.get("name") !== "undefined") {
       const name = searchParams.get("name")!.toLocaleLowerCase();
       data = data?.filter((pokemon) =>
