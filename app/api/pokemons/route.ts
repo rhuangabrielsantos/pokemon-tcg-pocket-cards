@@ -1,6 +1,12 @@
-import { NextRequest } from "next/server";
-
 import pokemons from "./pokemons.json";
+
+export interface IPokemonsResponse {
+  geneticApex: IPokemon[];
+  mythicalIsland: IPokemon[];
+  spaceTimeSmackdown: IPokemon[];
+  triumphantLight: IPokemon[];
+  promoA: IPokemon[];
+}
 
 export interface IPokemon {
   id: string;
@@ -12,34 +18,25 @@ export interface IPokemon {
   image: string;
 }
 
-export async function GET(request: NextRequest) {
-  const { searchParams } = request.nextUrl;
-
-  let data: IPokemon[] | undefined = pokemons;
-
+export async function GET() {
   try {
-    if (searchParams.get("name") !== "undefined") {
-      const name = searchParams.get("name")!.toLocaleLowerCase();
-      data = data?.filter((pokemon) =>
-        pokemon.name.toLowerCase().includes(name)
-      );
-    }
-
-    if (searchParams.get("type") !== "undefined") {
-      const type = searchParams.get("type")!.toLocaleLowerCase();
-      data = data?.filter((pokemon) =>
-        pokemon.type.toLowerCase().includes(type)
-      );
-    }
-
-    if (searchParams.get("pack") !== "undefined") {
-      const pack = searchParams.get("pack")!.toLocaleLowerCase();
-      data = data?.filter((pokemon) =>
-        pokemon.pack.toLowerCase().includes(pack)
-      );
-    }
-
-    return Response.json(data);
+    return Response.json({
+      geneticApex: pokemons.filter((pokemon) =>
+        ["Mewtwo", "Pikachu", "Charizard", "GeneticDomination"].includes(
+          pokemon.pack
+        )
+      ),
+      mythicalIsland: pokemons.filter((pokemon) =>
+        ["MythicalIsland"].includes(pokemon.pack)
+      ),
+      spaceTimeSmackdown: pokemons.filter((pokemon) =>
+        ["SpaceTiming", "Dialga", "Palkia"].includes(pokemon.pack)
+      ),
+      triumphantLight: pokemons.filter((pokemon) =>
+        ["TriumphantLight"].includes(pokemon.pack)
+      ),
+      promoA: pokemons.filter((pokemon) => ["Promo"].includes(pokemon.pack)),
+    });
   } catch (error) {
     console.log(error);
     return Response.error();

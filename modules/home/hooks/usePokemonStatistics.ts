@@ -21,6 +21,14 @@ const palkiaBoosterCards = pokemons
   .filter((pokemon) => ["SpaceTiming", "Palkia"].includes(pokemon.pack))
   .map((pokemon) => pokemon.id);
 
+const triumphantLightCards = pokemons
+  .filter((pokemon) => ["TriumphantLight"].includes(pokemon.pack))
+  .map((pokemon) => pokemon.id);
+
+const promoCards = pokemons
+  .filter((pokemon) => ["Promo"].includes(pokemon.pack))
+  .map((pokemon) => pokemon.id);
+
 export const usePokemonStatistics = () => {
   const { getClaimedPokemons } = useClaimedPokemons();
   const { user, isAuthenticated } = useAuth();
@@ -43,6 +51,15 @@ export const usePokemonStatistics = () => {
   >([]);
 
   const [palkiaBoosterCardsObtained, setPalkiaBoosterCardsObtained] = useState<
+    string[]
+  >([]);
+
+  const [
+    triumphantLightBoosterCardsObtained,
+    setTriumphantLightBoosterCardsObtained,
+  ] = useState<string[]>([]);
+
+  const [promoBoosterCardsObtained, setPromoBoosterCardsObtained] = useState<
     string[]
   >([]);
 
@@ -69,6 +86,14 @@ export const usePokemonStatistics = () => {
 
     setPalkiaBoosterCardsObtained(
       claimedPokemons.filter((card) => palkiaBoosterCards.includes(card))
+    );
+
+    setTriumphantLightBoosterCardsObtained(
+      claimedPokemons.filter((card) => triumphantLightCards.includes(card))
+    );
+
+    setPromoBoosterCardsObtained(
+      claimedPokemons.filter((card) => promoCards.includes(card))
     );
   };
 
@@ -113,5 +138,11 @@ export const usePokemonStatistics = () => {
 
     palkiaBoosterCardsObtained,
     palkiaBoosterCards,
+
+    triumphantLightBoosterCardsObtained,
+    triumphantLightCards,
+
+    promoBoosterCardsObtained,
+    promoCards,
   };
 };

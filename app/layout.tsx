@@ -23,7 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={nunito.className}>
-      <body className="w-screen h-screen m-0 p-0 flex justify-center">
+      <body className="w-[calc(100%)] h-screen m-0 p-0 flex justify-center">
         {children}
         <Analytics />
         <SpeedInsights />

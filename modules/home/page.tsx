@@ -1,26 +1,17 @@
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import PokemonList from "./components/PokemonList";
-import PokemonListFilters from "./components/PokemonListFilters";
 import PokemonStatistics from "./components/PokemonStatistics";
-import { IPokemon } from "@/app/api/pokemons/route";
+import { IPokemonsResponse } from "@/app/api/pokemons/route";
+import Image from "next/image";
 
-type SearchParams = { [key: string]: string | string[] | undefined };
-
-interface IHomePageProps {
-  searchParams: SearchParams;
-}
-
-const HomePage = async (props: IHomePageProps) => {
-  const { searchParams } = props;
-
-  const response = await fetch(
-    `${process.env.API_URL}/api/pokemons?name=${searchParams.name}&type=${searchParams.type}&pack=${searchParams.pack}`
-  );
+const HomePage = async () => {
+  const response = await fetch(`${process.env.API_URL}/api/pokemons`);
 
   if (!response.ok) {
     return <div>Erro ao carregar os pokemons</div>;
   }
 
-  const data: IPokemon[] = await response.json();
+  const data: IPokemonsResponse = await response.json();
 
   return (
     <section className="flex justify-start flex-col gap-8">
@@ -39,9 +30,71 @@ const HomePage = async (props: IHomePageProps) => {
       </div>
 
       <main className="flex flex-col items-center gap-10">
-        <PokemonListFilters />
+        {/* <PokemonListFilters /> */}
 
-        <PokemonList data={data} />
+        <Tabs
+          defaultValue="genetic-apex"
+          className="w-full flex flex-col items-center justify-center gap-10"
+        >
+          <TabsList>
+            <TabsTrigger value="genetic-apex">
+              <Image
+                src="/logo-genetic-apex.webp"
+                alt="Genetic Apex"
+                width={120}
+                height={66}
+              />
+            </TabsTrigger>
+            <TabsTrigger value="mythical-island">
+              <Image
+                src="/logo-mythical-island.webp"
+                alt="Mythical Island"
+                width={120}
+                height={66}
+              />
+            </TabsTrigger>
+            <TabsTrigger value="space-time-smackdown">
+              <Image
+                src="/logo-space-time-smackdown.webp"
+                alt="Space-time Smackdown"
+                width={120}
+                height={66}
+              />
+            </TabsTrigger>
+            <TabsTrigger value="triumphant-light">
+              <Image
+                src="/logo-triumphant-light.webp"
+                alt="Triumphant Light"
+                width={120}
+                height={66}
+              />
+            </TabsTrigger>
+            <TabsTrigger value="promo-a">
+              <Image
+                src="/logo-promo-a.webp"
+                alt="Promo A"
+                width={120}
+                height={66}
+              />
+            </TabsTrigger>
+          </TabsList>
+
+          <TabsContent value="genetic-apex">
+            <PokemonList data={data.geneticApex} />
+          </TabsContent>
+          <TabsContent value="mythical-island">
+            <PokemonList data={data.mythicalIsland} />
+          </TabsContent>
+          <TabsContent value="space-time-smackdown">
+            <PokemonList data={data.spaceTimeSmackdown} />
+          </TabsContent>
+          <TabsContent value="triumphant-light">
+            <PokemonList data={data.triumphantLight} />
+          </TabsContent>
+          <TabsContent value="promo-a">
+            <PokemonList data={data.promoA} />
+          </TabsContent>
+        </Tabs>
       </main>
     </section>
   );

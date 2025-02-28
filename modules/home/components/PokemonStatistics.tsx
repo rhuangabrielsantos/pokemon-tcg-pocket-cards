@@ -22,11 +22,17 @@ const PokemonStatistics = () => {
 
     palkiaBoosterCardsObtained,
     palkiaBoosterCards,
+
+    triumphantLightBoosterCardsObtained,
+    triumphantLightCards,
+
+    promoBoosterCardsObtained,
+    promoCards,
   } = usePokemonStatistics();
 
   return (
     <div className="flex flex-col items-center justify-center gap-6">
-      <div className="flex items-center justify-center gap-6">
+      <div className="flex items-start justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
             src="/charizard.jpg"
@@ -65,7 +71,7 @@ const PokemonStatistics = () => {
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
             src="/mytical-island.png"
-            alt="Pacote charizard"
+            alt="Pacote Mytical island"
             width={100}
             height={300}
           />
@@ -77,7 +83,7 @@ const PokemonStatistics = () => {
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
             src="/dialga.png"
-            alt="Pacote charizard"
+            alt="Pacote Dialga"
             width={100}
             height={300}
           />
@@ -88,12 +94,35 @@ const PokemonStatistics = () => {
         <div className="flex flex-col items-center justify-center gap-2">
           <Image
             src="/palkia.png"
-            alt="Pacote charizard"
+            alt="Pacote Palkia"
             width={100}
             height={300}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {palkiaBoosterCardsObtained.length} / {palkiaBoosterCards.length}
+          </h3>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Image
+            src="/triumphant-light.png"
+            alt="Pacote Triumphant light"
+            width={100}
+            height={300}
+          />
+          <h3 className="font-sans text-xl text-slate-600">
+            {triumphantLightBoosterCardsObtained.length} /{" "}
+            {triumphantLightCards.length}
+          </h3>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-2">
+          <Image
+            src="/promo.webp"
+            alt="Pacote Promo"
+            width={100}
+            height={300}
+          />
+          <h3 className="font-sans text-xl text-slate-600">
+            {promoBoosterCardsObtained.length} / {promoCards.length}
           </h3>
         </div>
       </div>
