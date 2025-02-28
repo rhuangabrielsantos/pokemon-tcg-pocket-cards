@@ -7,6 +7,8 @@ import Image from "next/image";
 const HomePage = async () => {
   const response = await fetch(`${process.env.API_URL}/api/pokemons`);
 
+  console.log({ response });
+
   if (!response.ok) {
     return <div>Erro ao carregar os pokemons</div>;
   }
