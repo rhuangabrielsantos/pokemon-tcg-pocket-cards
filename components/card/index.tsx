@@ -2,7 +2,6 @@
 
 import React from "react";
 import styles from "./styles.module.css";
-import Image from "next/image";
 
 interface ICardProps {
   src: string;
@@ -16,7 +15,7 @@ const Card = (props: ICardProps) => {
 
   return (
     <div className={styles.card}>
-      <Image
+      <img
         className={styles.card}
         style={{
           filter: hasGrayScale ? "grayscale(100%)" : "none",
@@ -24,20 +23,16 @@ const Card = (props: ICardProps) => {
         onClick={onClick}
         src={src}
         alt="Pokemon"
-        width={200}
-        height={300}
       />
 
       <div className="absolute bottom-2 right-2 flex gap-1 md:bottom-4 md:right-4">
         {boosters?.map((src, index) => (
-          <Image
+          <img
             key={index}
             src={src}
             alt="booster pack"
-            width={60}
-            height={30}
             title="Booster Pack que contém este Pokémon"
-            style={{ filter: "none" }}
+            style={{ filter: "none", width: 50, height: 90 }}
           />
         ))}
       </div>

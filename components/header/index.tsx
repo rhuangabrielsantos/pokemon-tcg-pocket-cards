@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { useAuth } from "@/hooks/useAuth";
 import { Button } from "../ui/button";
 import { localStorageAdapter } from "@/contexts/Storage/LocalStorageAdapter";
@@ -35,12 +34,11 @@ const Header = () => {
   return isAuthenticated ? (
     <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
       <div className="flex items-center justify-center gap-2">
-        <Image
+        <img
           src={user?.photoURL ?? ""}
           alt="Usuario"
-          width={30}
-          height={30}
           className="rounded-full"
+          style={{ width: 30, height: 30 }}
         />
 
         <div className="flex flex-col items-start justify-center">
@@ -72,7 +70,7 @@ const Header = () => {
         className="flex items-center justify-center bg-white text-black border border-zinc-300 rounded-xl hover:bg-zinc-100"
         onClick={onSignInWithGoogle}
       >
-        <Image src="/google.svg" alt="Google" width={20} height={20} />
+        <img src="/google.svg" alt="Google" style={{ width: 20, height: 20 }} />
         <span className="ml-2">Sign in with Google</span>
       </Button>
     </header>

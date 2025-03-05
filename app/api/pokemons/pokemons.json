@@ -2943,6 +2943,60 @@
     "image": "/pokemons/P-A_041_EN.webp"
   },
   {
+    "id": "pa-042",
+    "name": "Darkrai ex",
+    "rarity": "",
+    "type": "darkness",
+    "pack": "Promo",
+    "health": "140",
+    "image": "/pokemons/P-A_042_EN.webp"
+  },
+  {
+    "id": "pa-043",
+    "name": "Cherrim",
+    "rarity": "",
+    "type": "grass",
+    "pack": "Promo",
+    "health": "80",
+    "image": "/pokemons/P-A_043_EN.webp"
+  },
+  {
+    "id": "pa-044",
+    "name": "Raichu",
+    "rarity": "",
+    "type": "lightning",
+    "pack": "Promo",
+    "health": "90",
+    "image": "/pokemons/P-A_044_EN.webp"
+  },
+  {
+    "id": "pa-045",
+    "name": "Nosepass",
+    "rarity": "",
+    "type": "fighting",
+    "pack": "Promo",
+    "health": "60",
+    "image": "/pokemons/P-A_045_EN.webp"
+  },
+  {
+    "id": "pa-046",
+    "name": "Gible",
+    "rarity": "",
+    "type": "fighting",
+    "pack": "Promo",
+    "health": "60",
+    "image": "/pokemons/P-A_046_EN.webp"
+  },
+  {
+    "id": "pa-047",
+    "name": "Staraptor",
+    "rarity": "",
+    "type": "normal",
+    "pack": "Promo",
+    "health": "140",
+    "image": "/pokemons/P-A_047_EN.webp"
+  },
+  {
     "id": "a1a-001",
     "name": "Exeggcute",
     "rarity": "◊",

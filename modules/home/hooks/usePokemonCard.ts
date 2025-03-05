@@ -27,6 +27,7 @@ export const usePokemonCard = ({
       Palkia: ["/palkia.png"],
       Dialga: ["/dialga.png"],
       SpaceTiming: ["/palkia.png", "/dialga.png"],
+      TriumphantLight: ["/triumphant-light.png"],
     };
 
     return boosters[pokemon.pack as keyof typeof boosters];

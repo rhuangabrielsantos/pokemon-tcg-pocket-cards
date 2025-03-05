@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { usePokemonStatistics } from "../hooks/usePokemonStatistics";
 
 const PokemonStatistics = () => {
@@ -34,11 +33,10 @@ const PokemonStatistics = () => {
     <div className="flex flex-col items-center justify-center gap-6">
       <div className="flex items-start justify-center gap-6">
         <div className="flex flex-col items-center justify-center gap-2">
-          <Image
+          <img
             src="/charizard.jpg"
             alt="Pacote charizard"
-            width={100}
-            height={300}
+            style={{ width: 120, height: 250 }}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {charizardBoosterCardsObtained.length} /{" "}
@@ -46,22 +44,20 @@ const PokemonStatistics = () => {
           </h3>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Image
+          <img
             src="/mewtwo.jpg"
             alt="Pacote charizard"
-            width={100}
-            height={300}
+            style={{ width: 120, height: 250 }}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {mewtwoBoosterCardsObtained.length} / {mewtwoBoosterCards.length}
           </h3>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Image
+          <img
             src="/pikachu.jpg"
             alt="Pacote charizard"
-            width={100}
-            height={300}
+            style={{ width: 120, height: 250 }}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {pickachuBoosterCardsObtained.length} /{" "}
@@ -69,11 +65,10 @@ const PokemonStatistics = () => {
           </h3>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Image
+          <img
             src="/mytical-island.png"
             alt="Pacote Mytical island"
-            width={100}
-            height={300}
+            style={{ width: 120, height: 250 }}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {mythicalIslandCardsObtained.length} / {mythicalIslandCards.length}
@@ -81,33 +76,30 @@ const PokemonStatistics = () => {
         </div>
 
         <div className="flex flex-col items-center justify-center gap-2">
-          <Image
+          <img
             src="/dialga.png"
             alt="Pacote Dialga"
-            width={100}
-            height={300}
+            style={{ width: 120, height: 250 }}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {dialgaBoosterCardsObtained.length} / {dialgaBoosterCards.length}
           </h3>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Image
+          <img
             src="/palkia.png"
             alt="Pacote Palkia"
-            width={100}
-            height={300}
+            style={{ width: 120, height: 250 }}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {palkiaBoosterCardsObtained.length} / {palkiaBoosterCards.length}
           </h3>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Image
+          <img
             src="/triumphant-light.png"
             alt="Pacote Triumphant light"
-            width={100}
-            height={300}
+            style={{ width: 120, height: 250 }}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {triumphantLightBoosterCardsObtained.length} /{" "}
@@ -115,11 +107,10 @@ const PokemonStatistics = () => {
           </h3>
         </div>
         <div className="flex flex-col items-center justify-center gap-2">
-          <Image
+          <img
             src="/promo.webp"
             alt="Pacote Promo"
-            width={100}
-            height={300}
+            style={{ width: 120, height: 250 }}
           />
           <h3 className="font-sans text-xl text-slate-600">
             {promoBoosterCardsObtained.length} / {promoCards.length}
