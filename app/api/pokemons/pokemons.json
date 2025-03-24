@@ -2997,6 +2997,24 @@
     "image": "/pokemons/P-A_047_EN.webp"
   },
   {
+    "id": "pa-048",
+    "name": "Manaphy",
+    "rarity": "",
+    "type": "water",
+    "pack": "Promo",
+    "health": "50",
+    "image": "/pokemons/P-A_048_EN.webp"
+  },
+  {
+    "id": "pa-049",
+    "name": "Snorlax",
+    "rarity": "",
+    "type": "normal",
+    "pack": "Promo",
+    "health": "140",
+    "image": "/pokemons/P-A_049_EN.webp"
+  },
+  {
     "id": "a1a-001",
     "name": "Exeggcute",
     "rarity": "◊",
