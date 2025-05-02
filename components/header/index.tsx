@@ -33,19 +33,11 @@ const Header = () => {
 
   return isAuthenticated ? (
     <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-      <div className="flex items-center justify-center gap-2">
-        <img
-          src={user?.photoURL ?? ""}
-          alt="Usuario"
-          className="rounded-full"
-          style={{ width: 30, height: 30 }}
-        />
-
-        <div className="flex flex-col items-start justify-center">
-          <span className="font-sans">{user?.displayName}</span>
-          <span className="font-sans">{user?.email} </span>
-        </div>
-      </div>
+      <img
+        src="/logo-poke-album.png"
+        alt="Poke Album"
+        style={{ width: 80, height: 80 }}
+      />
 
       <div className="flex items-center justify-center gap-4">
         <Button onClick={onImportCards}>
@@ -57,14 +49,22 @@ const Header = () => {
         >
           Sign out
         </Button>
+
+        <img
+          src={user?.photoURL ?? ""}
+          alt="Usuario"
+          className="rounded-full"
+          style={{ width: 30, height: 30 }}
+        />
       </div>
     </header>
   ) : (
-    <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between px-4 gap-4">
-      <p className="text-lg font-medium text-slate-600  font-sans">
-        Faça login para salvar suas cartas e visualizá-las em todos os seus
-        dispositivos!
-      </p>
+    <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+      <img
+        src="/logo-poke-album.png"
+        alt="Poke Album"
+        style={{ width: 80, height: 80 }}
+      />
 
       <Button
         className="flex items-center justify-center bg-white text-black border border-zinc-300 rounded-xl hover:bg-zinc-100"

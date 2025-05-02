@@ -63,6 +63,11 @@ export const usePokemonStatistics = () => {
     string[]
   >([]);
 
+  const [totalCollected, setTotalCollected] = useState(0);
+  const [percentComplete, setPercentComplete] = useState(0);
+  const [rarePokemon, setRarePokemon] = useState(0);
+  const [legendaryPokemon, setLegendaryPokemon] = useState(0);
+
   const handleCountBoosterCards = async (claimedPokemons: string[]) => {
     setCharizardBoosterCardsObtained(
       claimedPokemons.filter((card) => charizardBoosterCards.includes(card))
@@ -94,6 +99,24 @@ export const usePokemonStatistics = () => {
 
     setPromoBoosterCardsObtained(
       claimedPokemons.filter((card) => promoCards.includes(card))
+    );
+
+    setTotalCollected(claimedPokemons.length);
+    setPercentComplete(
+      Math.round((claimedPokemons.length / pokemons.length) * 100)
+    );
+
+    setRarePokemon(
+      claimedPokemons.filter((card) => {
+        const pokemon = pokemons.find((p) => p.id === card);
+        return pokemon?.rarity.startsWith("☆");
+      }).length
+    );
+    setLegendaryPokemon(
+      claimedPokemons.filter((card) => {
+        const pokemon = pokemons.find((p) => p.id === card);
+        return pokemon?.rarity.startsWith("★");
+      }).length
     );
   };
 
@@ -144,5 +167,36 @@ export const usePokemonStatistics = () => {
 
     promoBoosterCardsObtained,
     promoCards,
+
+    totalCollected,
+    percentComplete,
+    rarePokemon,
+    legendaryPokemon,
+
+    geneticApexProgress: Math.round(
+      ((charizardBoosterCardsObtained.length +
+        mewtwoBoosterCardsObtained.length +
+        pickachuBoosterCardsObtained.length) /
+        (charizardBoosterCards.length +
+          mewtwoBoosterCards.length +
+          pickachuBoosterCards.length)) *
+        100
+    ),
+    mythicalIslandProgress: Math.round(
+      (mythicalIslandCardsObtained.length / mythicalIslandCards.length) * 100
+    ),
+    spaceTimeSmackdownProgress: Math.round(
+      ((dialgaBoosterCardsObtained.length + palkiaBoosterCardsObtained.length) /
+        (dialgaBoosterCards.length + palkiaBoosterCards.length)) *
+        100
+    ),
+    triumphantLightProgress: Math.round(
+      (triumphantLightBoosterCardsObtained.length /
+        triumphantLightCards.length) *
+        100
+    ),
+    promoAProgress: Math.round(
+      (promoBoosterCardsObtained.length / promoCards.length) * 100
+    ),
   };
 };

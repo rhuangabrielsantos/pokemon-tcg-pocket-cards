@@ -4,6 +4,7 @@ import type { Metadata } from "next";
 import { Nunito } from "next/font/google";
 
 import "./globals.css";
+import { Sidebar } from "@/components/sidebar";
 
 const nunito = Nunito({
   weight: ["400", "700"],
@@ -12,8 +13,9 @@ const nunito = Nunito({
 });
 
 export const metadata: Metadata = {
-  title: "Pokemon TCG Pocket",
-  description: "Gerenciador de cartas do pokemon tcg pocket",
+  title: "PokéAlbum",
+  description:
+    "Sua plataforma para colecionar, organizar e compartilhar sua coleção de Pokémon TCG Pocket com amigos e outros treinadores.",
 };
 
 export default function RootLayout({
@@ -23,8 +25,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR" className={nunito.className}>
-      <body className="w-[calc(100%)] h-screen m-0 p-0 flex justify-center">
+      <link rel="icon" href="/pokedex.png" sizes="any" />
+
+      <body className="w-screen h-screen m-0 p-0 flex justify-center bg-gray-50">
         {children}
+
+        <Sidebar />
         <Analytics />
         <SpeedInsights />
       </body>

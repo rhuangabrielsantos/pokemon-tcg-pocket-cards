@@ -11,6 +11,13 @@ body {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+
+  -ms-overflow-style: "none";
+  scrollbar-width: "none";
+}
+
+::-webkit-scrollbar {
+  display: none;
 }
 
 @layer base {
@@ -77,8 +84,6 @@ body {
     @apply bg-background text-foreground;
   }
 }
-
-
 
 @layer base {
   * {

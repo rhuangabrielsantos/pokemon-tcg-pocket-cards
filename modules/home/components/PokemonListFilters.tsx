@@ -58,26 +58,6 @@ const PokemonListFilters = () => {
           </SelectContent>
         </Select>
 
-        <Select value={pack} onValueChange={(value) => setPack(value)}>
-          <SelectTrigger
-            className="w-full md:w-[300px]"
-            aria-label="Selecione o pacote"
-          >
-            <SelectValue placeholder="Selecione o pacote" />
-          </SelectTrigger>
-          <SelectContent>
-            <SelectItem value="Mewtwo">Genetic Apex Mewtwo</SelectItem>
-            <SelectItem value="Pikachu">Genetic Apex Pikachu</SelectItem>
-            <SelectItem value="Charizard">Genetic Apex Charizard</SelectItem>
-            <SelectItem value="GeneticDomination">Genetic Apex</SelectItem>
-            <SelectItem value="MythicalIsland">Mystical Island</SelectItem>
-            <SelectItem value="Dialga">Space-Time Smackdown Dialga</SelectItem>
-            <SelectItem value="Palkia">Space-Time Smackdown Palkia</SelectItem>
-            <SelectItem value="SpaceTiming">Space-Time Smackdown</SelectItem>
-            <SelectItem value="Promo">Promo</SelectItem>
-          </SelectContent>
-        </Select>
-
         <Button
           onClick={handleFilterCards}
           className="w-full md:w-auto"

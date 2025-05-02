@@ -1,17 +1,19 @@
 "use server";
 
 import PokemonStatistics from "./components/PokemonStatistics";
-import { IPokemonsResponse } from "@/app/api/pokemons/route";
-import PokemonListTabs from "./components/PokemonListTabs";
+import { IPokemon } from "@/app/api/pokemons/route";
+import PokemonList from "./components/PokemonList";
 
 const HomePage = async () => {
-  const response = await fetch(`${process.env.API_URL}/api/pokemons`);
+  const response = await fetch(
+    `${process.env.API_URL}/api/pokemons?pack=geneticApex`
+  );
 
   if (!response.ok) {
     return <div>Erro ao carregar os pokemons</div>;
   }
 
-  const data: IPokemonsResponse = await response.json();
+  const data: IPokemon[] = await response?.json();
 
   return (
     <section className="flex justify-start flex-col gap-8">
@@ -26,13 +28,11 @@ const HomePage = async () => {
           saber quais pacotes abrir para completar a coleção.
         </h2>
 
-        <PokemonStatistics />
+        <PokemonStatistics collection="geneticApex" />
       </div>
 
       <main className="flex flex-col items-center gap-10">
-        {/* <PokemonListFilters /> */}
-
-        <PokemonListTabs data={data} />
+        <PokemonList data={data} />
       </main>
     </section>
   );
