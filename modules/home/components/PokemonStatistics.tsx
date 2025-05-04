@@ -32,6 +32,15 @@ const PokemonStatistics: FC<PokemonStatisticsProps> = ({ collection }) => {
 
     promoBoosterCardsObtained,
     promoCards,
+
+    shiningRevelryBoosterCardsObtained,
+    shiningRevelryBoosterCards,
+
+    solgaleoBoosterCardsObtained,
+    solgaleoBoosterCards,
+
+    lunalaBoosterCardsObtained,
+    lunalaBoosterCards,
   } = usePokemonStatistics();
 
   return (
@@ -141,6 +150,47 @@ const PokemonStatistics: FC<PokemonStatisticsProps> = ({ collection }) => {
               {promoBoosterCardsObtained.length} / {promoCards.length}
             </h3>
           </div>
+        ) : null}
+
+        {collection === "shining-revelry" ? (
+          <div className="flex flex-col items-center justify-center gap-2">
+            <img
+              src="/shining-revelry.png"
+              alt="Pacote Shining Revelry"
+              style={{ width: 120, height: 250 }}
+            />
+            <h3 className="font-sans text-xl text-slate-600">
+              {shiningRevelryBoosterCardsObtained.length} /{" "}
+              {shiningRevelryBoosterCards.length}
+            </h3>
+          </div>
+        ) : null}
+
+        {collection === "celestial-guardians" ? (
+          <>
+            <div className="flex flex-col items-center justify-center gap-2">
+              <img
+                src="/solgaleo.png"
+                alt="Pacote Solgaleo"
+                style={{ width: 120, height: 250 }}
+              />
+              <h3 className="font-sans text-xl text-slate-600">
+                {solgaleoBoosterCardsObtained.length} /{" "}
+                {solgaleoBoosterCards.length}
+              </h3>
+            </div>
+            <div className="flex flex-col items-center justify-center gap-2">
+              <img
+                src="/lunala.png"
+                alt="Pacote Lunala"
+                style={{ width: 120, height: 250 }}
+              />
+              <h3 className="font-sans text-xl text-slate-600">
+                {lunalaBoosterCardsObtained.length} /{" "}
+                {lunalaBoosterCards.length}
+              </h3>
+            </div>
+          </>
         ) : null}
       </div>
     </div>

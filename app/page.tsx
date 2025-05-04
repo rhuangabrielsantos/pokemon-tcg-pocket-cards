@@ -31,6 +31,8 @@ export default function HomePage() {
     mythicalIslandProgress,
     spaceTimeSmackdownProgress,
     triumphantLightProgress,
+    shiningRevelryProgress,
+    celestialGuardiansProgress,
     promoAProgress,
   } = usePokemonStatistics();
 
@@ -70,6 +72,23 @@ export default function HomePage() {
       cover: "/triumphant-light.png",
     },
     {
+      id: "shining-revelry",
+      name: "Shining Revelry",
+      color: "bg-gray-500",
+      description:
+        "O terceiro pacote de reforço temático e a quinta expansão geral",
+      progress: shiningRevelryProgress,
+      cover: "/shining-revelry.png",
+    },
+    {
+      id: "celestial-guardians",
+      name: "Celestial Guardians",
+      color: "bg-blue-500",
+      description: "A terceira expansão principal, e sexta expansão geral",
+      progress: celestialGuardiansProgress,
+      cover: "/solgaleo.png",
+    },
+    {
       id: "promo-a",
       name: "Promo A",
       color: "bg-pink-500",
@@ -96,7 +115,7 @@ export default function HomePage() {
                 Colecione, organize e compartilhe sua coleção de Pokémon TCG
                 Pocket com treinadores de todo o mundo!
               </p>
-              <p className="text-xl flex items-center gap-2">
+              <p className="text-xl md:flex hidden items-center gap-2">
                 <ArrowLeft />
                 Clique em uma das coleções ao lado para começar a explorar!
               </p>

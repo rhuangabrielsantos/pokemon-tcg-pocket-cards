@@ -29,6 +29,20 @@ const promoCards = pokemons
   .filter((pokemon) => ["Promo"].includes(pokemon.pack))
   .map((pokemon) => pokemon.id);
 
+const shiningRevelryBoosterCards = pokemons
+  .filter((pokemon) => ["ShiningRevelry"].includes(pokemon.pack))
+  .map((pokemon) => pokemon.id);
+
+const solgaleoBoosterCards = pokemons
+  .filter((pokemon) =>
+    ["CelestialGuardians", "Solgaleo"].includes(pokemon.pack)
+  )
+  .map((pokemon) => pokemon.id);
+
+const lunalaBoosterCards = pokemons
+  .filter((pokemon) => ["CelestialGuardians", "Lunala"].includes(pokemon.pack))
+  .map((pokemon) => pokemon.id);
+
 export const usePokemonStatistics = () => {
   const { getClaimedPokemons } = useClaimedPokemons();
   const { user, isAuthenticated } = useAuth();
@@ -60,6 +74,18 @@ export const usePokemonStatistics = () => {
   ] = useState<string[]>([]);
 
   const [promoBoosterCardsObtained, setPromoBoosterCardsObtained] = useState<
+    string[]
+  >([]);
+
+  const [
+    shiningRevelryBoosterCardsObtained,
+    setShiningRevelryBoosterCardsObtained,
+  ] = useState<string[]>([]);
+
+  const [solgaleoBoosterCardsObtained, setSolgaleoBoosterCardsObtained] =
+    useState<string[]>([]);
+
+  const [lunalaBoosterCardsObtained, setLunalaBoosterCardsObtained] = useState<
     string[]
   >([]);
 
@@ -99,6 +125,19 @@ export const usePokemonStatistics = () => {
 
     setPromoBoosterCardsObtained(
       claimedPokemons.filter((card) => promoCards.includes(card))
+    );
+
+    setShiningRevelryBoosterCardsObtained(
+      claimedPokemons.filter((card) =>
+        shiningRevelryBoosterCards.includes(card)
+      )
+    );
+
+    setSolgaleoBoosterCardsObtained(
+      claimedPokemons.filter((card) => solgaleoBoosterCards.includes(card))
+    );
+    setLunalaBoosterCardsObtained(
+      claimedPokemons.filter((card) => lunalaBoosterCards.includes(card))
     );
 
     setTotalCollected(claimedPokemons.length);
@@ -168,6 +207,15 @@ export const usePokemonStatistics = () => {
     promoBoosterCardsObtained,
     promoCards,
 
+    shiningRevelryBoosterCardsObtained,
+    shiningRevelryBoosterCards,
+
+    solgaleoBoosterCardsObtained,
+    solgaleoBoosterCards,
+
+    lunalaBoosterCardsObtained,
+    lunalaBoosterCards,
+
     totalCollected,
     percentComplete,
     rarePokemon,
@@ -197,6 +245,17 @@ export const usePokemonStatistics = () => {
     ),
     promoAProgress: Math.round(
       (promoBoosterCardsObtained.length / promoCards.length) * 100
+    ),
+    shiningRevelryProgress: Math.round(
+      (shiningRevelryBoosterCardsObtained.length /
+        shiningRevelryBoosterCards.length) *
+        100
+    ),
+    celestialGuardiansProgress: Math.round(
+      ((solgaleoBoosterCardsObtained.length +
+        lunalaBoosterCardsObtained.length) /
+        (solgaleoBoosterCards.length + lunalaBoosterCards.length)) *
+        100
     ),
   };
 };

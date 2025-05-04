@@ -3,6 +3,7 @@
 import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import path from "path";
 import { FC } from "react";
 
 const collections = [
@@ -27,6 +28,14 @@ const collections = [
     logo: "logo-triumphant-light.webp",
   },
   {
+    path: "/shining-revelry",
+    logo: "logo-shining-revelry.png",
+  },
+  {
+    path: "/celestial-guardians",
+    logo: "logo-celestial-guardians.png",
+  },
+  {
     path: "/promo-a",
     logo: "logo-promo-a.webp",
   },
@@ -36,7 +45,7 @@ export const Sidebar: FC = () => {
   const currentPath = usePathname();
 
   return (
-    <nav className="z-20 flex justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-3 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
+    <nav className="z-20 hidden md:flex justify-around gap-4 border-t border-gray-200 bg-white/50 p-2.5 shadow-lg backdrop-blur-lg dark:border-slate-600/60 dark:bg-slate-800/50 fixed top-2/4 -translate-y-2/4 left-3 min-h-[auto] min-w-[64px] flex-col rounded-lg border">
       {collections.map((collection) => (
         <Link
           key={collection.path}

@@ -4,6 +4,7 @@ import { useAuth } from "@/hooks/useAuth";
 import { Button } from "../ui/button";
 import { localStorageAdapter } from "@/contexts/Storage/LocalStorageAdapter";
 import { useClaimedPokemons } from "@/modules/home/hooks/useClaimedPokemons";
+import Link from "next/link";
 
 const Header = () => {
   const { onSignInWithGoogle, onSignOut, isAuthenticated, user } = useAuth();
@@ -33,11 +34,13 @@ const Header = () => {
 
   return isAuthenticated ? (
     <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-      <img
-        src="/logo-poke-album.png"
-        alt="Poke Album"
-        style={{ width: 80, height: 80 }}
-      />
+      <Link href="/">
+        <img
+          src="/logo-poke-album.png"
+          alt="Poke Album"
+          style={{ width: 80, height: 80 }}
+        />
+      </Link>
 
       <div className="flex items-center justify-center gap-4">
         <Button onClick={onImportCards}>
@@ -60,11 +63,13 @@ const Header = () => {
     </header>
   ) : (
     <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
-      <img
-        src="/logo-poke-album.png"
-        alt="Poke Album"
-        style={{ width: 80, height: 80 }}
-      />
+      <Link href="/">
+        <img
+          src="/logo-poke-album.png"
+          alt="Poke Album"
+          style={{ width: 80, height: 80 }}
+        />
+      </Link>
 
       <Button
         className="flex items-center justify-center bg-white text-black border border-zinc-300 rounded-xl hover:bg-zinc-100"
