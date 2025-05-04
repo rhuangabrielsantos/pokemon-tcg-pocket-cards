@@ -91,8 +91,8 @@ export const usePokemonStatistics = () => {
 
   const [totalCollected, setTotalCollected] = useState(0);
   const [percentComplete, setPercentComplete] = useState(0);
-  const [rarePokemon, setRarePokemon] = useState(0);
-  const [legendaryPokemon, setLegendaryPokemon] = useState(0);
+  const [fullArtPokemon, setFullArtPokemon] = useState(0);
+  const [shinyPokemon, setShinyPokemon] = useState(0);
 
   const handleCountBoosterCards = async (claimedPokemons: string[]) => {
     setCharizardBoosterCardsObtained(
@@ -145,13 +145,14 @@ export const usePokemonStatistics = () => {
       Math.round((claimedPokemons.length / pokemons.length) * 100)
     );
 
-    setRarePokemon(
+    setFullArtPokemon(
       claimedPokemons.filter((card) => {
         const pokemon = pokemons.find((p) => p.id === card);
-        return pokemon?.rarity.startsWith("☆");
+        return !pokemon?.rarity.startsWith("◊") && pokemon?.rarity !== "";
       }).length
     );
-    setLegendaryPokemon(
+
+    setShinyPokemon(
       claimedPokemons.filter((card) => {
         const pokemon = pokemons.find((p) => p.id === card);
         return pokemon?.rarity.startsWith("★");
@@ -218,8 +219,8 @@ export const usePokemonStatistics = () => {
 
     totalCollected,
     percentComplete,
-    rarePokemon,
-    legendaryPokemon,
+    fullArtPokemon,
+    shinyPokemon,
 
     geneticApexProgress: Math.round(
       ((charizardBoosterCardsObtained.length +

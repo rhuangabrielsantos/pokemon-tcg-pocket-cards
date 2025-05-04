@@ -2542,7 +2542,7 @@
     "name": "Mew",
     "rarity": "☆☆☆",
     "type": "psychic",
-    "pack": "",
+    "pack": "GeneticDomination",
     "health": "60",
     "image": "/pokemons/A1_283_EN.webp"
   },
@@ -2648,7 +2648,7 @@
   {
     "id": "pa-009",
     "name": "Pikachu",
-    "rarity": "",
+    "rarity": "-",
     "type": "lightning",
     "pack": "Promo",
     "health": "60",
@@ -2657,7 +2657,7 @@
   {
     "id": "pa-010",
     "name": "Mewtwo",
-    "rarity": "",
+    "rarity": "-",
     "type": "psychic",
     "pack": "Promo",
     "health": "120",
@@ -2729,7 +2729,7 @@
   {
     "id": "pa-018",
     "name": "Venusaur",
-    "rarity": "",
+    "rarity": "-",
     "type": "grass",
     "pack": "Promo",
     "health": "160",
@@ -2801,7 +2801,7 @@
   {
     "id": "pa-026",
     "name": "Pikachu",
-    "rarity": "",
+    "rarity": "-",
     "type": "lightning",
     "pack": "Promo",
     "health": "60",
@@ -2828,7 +2828,7 @@
   {
     "id": "pa-029",
     "name": "Blastoise",
-    "rarity": "",
+    "rarity": "-",
     "type": "water",
     "pack": "Promo",
     "health": "150",
@@ -2873,7 +2873,7 @@
   {
     "id": "pa-034",
     "name": "Piplup",
-    "rarity": "",
+    "rarity": "-",
     "type": "water",
     "pack": "Promo",
     "health": "60",
@@ -2981,7 +2981,7 @@
   {
     "id": "pa-046",
     "name": "Gible",
-    "rarity": "",
+    "rarity": "-",
     "type": "fighting",
     "pack": "Promo",
     "health": "60",
@@ -9668,7 +9668,7 @@
   {
     "id": "pa-050",
     "name": "Mewtwo ex",
-    "rarity": "",
+    "rarity": "★",
     "type": "psychic",
     "pack": "Promo",
     "health": "",
@@ -9677,7 +9677,7 @@
   {
     "id": "pa-051",
     "name": "Cyclizar",
-    "rarity": "",
+    "rarity": "★",
     "type": "colorless",
     "pack": "Promo",
     "health": "",
@@ -9686,7 +9686,7 @@
   {
     "id": "pa-052",
     "name": "Sprigatito",
-    "rarity": "",
+    "rarity": "-",
     "type": "grass",
     "pack": "Promo",
     "health": "",
@@ -9704,7 +9704,7 @@
   {
     "id": "pa-054",
     "name": "Paw mot",
-    "rarity": "",
+    "rarity": "-",
     "type": "lightning",
     "pack": "Promo",
     "health": "",
@@ -9812,7 +9812,7 @@
   {
     "id": "pa-066",
     "name": "Mimikyu",
-    "rarity": "",
+    "rarity": "-",
     "type": "psychic",
     "pack": "Promo",
     "health": "",
@@ -9848,7 +9848,7 @@
   {
     "id": "pa-070",
     "name": "Alolan Ninetales",
-    "rarity": "",
+    "rarity": "-",
     "type": "water",
     "pack": "Promo",
     "health": "",
