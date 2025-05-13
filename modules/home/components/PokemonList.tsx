@@ -10,7 +10,7 @@ interface IHomePageProps {
   itemsPerPage?: number;
 }
 
-const PokemonList = ({ data, itemsPerPage = 10 }: IHomePageProps) => {
+const PokemonList = ({ data, itemsPerPage = 30 }: IHomePageProps) => {
   const [displayedItems, setDisplayedItems] = useState<IPokemon[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [claimedPokemons, setClaimedPokemons] = useState<string[]>([]);

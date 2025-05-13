@@ -33,7 +33,7 @@ const Header = () => {
   };
 
   return isAuthenticated ? (
-    <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+    <header className="w-full flex flex-col py-4 md:p-0 lg:flex-row items-start lg:items-center justify-between gap-4">
       <Link href="/">
         <img
           src="/logo-poke-album.png"
@@ -62,7 +62,7 @@ const Header = () => {
       </div>
     </header>
   ) : (
-    <header className="w-full flex flex-col lg:flex-row items-start lg:items-center justify-between gap-4">
+    <header className="w-full flex flex-col py-4 md:p-0 lg:flex-row items-start lg:items-center justify-between gap-4">
       <Link href="/">
         <img
           src="/logo-poke-album.png"
